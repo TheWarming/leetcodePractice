@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var isAnagram = function(s, t) {
+            if(s.length !== t.length) return false
+            let objs = {};
+            let objt = {};
+            for(let i = 0; i < s.length;i++){
+                if(!objs[s[i]]){
+                    objs[s[i]] = 1;
+                }else{
+                    objs[s[i]]++;
+                }
+                if(!objt[t[i]]){
+                    objt[t[i]] = 1;
+                }else{
+                    objt[t[i]]++;
+                }
+            }
+            for(let k in objs){
+                if(objs[k] !== objt[k]) return false
+            }
+            return true
+        };
+
+        var isAnagram = function(s, t) {
+            if(s.length !== t.length) return false
+            let obj = {};
+            for(let i = 0; i < s.length;i++){
+                obj[s[i]] ? obj[s[i]]++ : obj[s[i]] = 1;
+                obj[t[i]] ? obj[t[i]]-- : obj[t[i]] = -1;
+            }
+            for(let k in obj){
+                if(obj[k] !== 0) return false
+            }
+            return true
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+            var titleToNumber = function(s) {
+                let num = 0;
+                let b = 1;
+                for(let i = s.length - 1 ; i >= 0; i--){
+                    num += (s[i].charCodeAt - 65)*b + 1
+                }
+                return num
+            };
+            console.log('a'.charCodeAt())
+		</script>
+	</body>
+</html>

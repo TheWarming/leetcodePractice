@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var longestPalindrome = function(s) {
+            let res = 0;
+            let mymap = new Map()
+            for(let i = 0; i < s.length; i++){
+                if(!mymap.has(s[i])){
+                    mymap.set(s[i],1)
+                }else{
+                    mymap.set(s[i],mymap.get(s[i]) + 1);
+                    if(mymap.get(s[i])%2 === 0){
+                        res += 2
+                    }
+                }
+            }
+            return res < s.length ? res + 1: res
+        };
+    </script>
+</body>
+</html>

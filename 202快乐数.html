@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //投机取巧
+        var isHappy = function(n) {
+            function help(n){
+                let sum = 0
+                while(n > 0){
+                    sum += Math.pow(n%10,2)
+                    n = parseInt(n/10);
+                }
+                return sum;
+            }
+            for(let i = 0;i < 10;i++){
+                let sum = help(n);
+                if(sum === 1) return true
+                n = sum;
+            }
+            return false
+        };
+        //官方 可以双指针，也可以哈希表   一定会陷入一个循环或者减小为0！！！
+        var isHappy = function(n) {
+            function help(n){
+                let sum = 0
+                while(n > 0){
+                    sum += Math.pow(n%10,2)
+                    n = parseInt(n/10);
+                }
+                return sum;
+            }
+            let slow = help(n);
+            let fast = help(slow);
+            while((fast !== 1 || slow !== 1 ) && fast !== slow){
+                slow = help(slow);
+                fast = help(help(fast));
+            }
+            return fast === 1 || slow === 1
+        };
+
+    </script>
+</body>
+</html>

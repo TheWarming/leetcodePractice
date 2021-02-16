@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var wordPattern = function(pattern, s) {
+            let sarr = s.split(' ');
+            let map = new Map();
+            let set = new Set();
+            if(sarr.length !== pattern.length) return false
+            for(let i = 0; i < sarr.length; i++){
+                if(!map.has(pattern[i])){
+                    if(set.has(sarr[i])) return false
+                    set.add(sarr[i]);
+                    map.set(pattern[i],sarr[i]);
+                }else if(map.get(pattern[i]) !== sarr[i]){
+                    return false
+                }
+            }
+            return true
+        };
+    </script>
+</body>
+</html>

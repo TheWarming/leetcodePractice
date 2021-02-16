@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var canConstruct = function(ransomNote, magazine) {
+            let map = new Map();
+            magazine.split('').forEach(value => {
+                map.has(value) ? map.set(value,map.get(value) + 1) : map.set(value,1)
+            })
+            for(let i = 0; i < ransomNote.length; i++){
+                if(map.get(ransomNote[i]) >= 1){
+                    map.set(ransomNote[i], map.get(ransomNote[i]) - 1)
+                }else{
+                    return false
+                }
+            }
+            return true
+        };
+    </script>
+</body>
+</html>

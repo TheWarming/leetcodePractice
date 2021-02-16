@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div>
+			<ul>
+				<li></li>
+			</ul>
+			<ul>
+				<li></li>
+			</ul>
+		</div>
+		<script>
+
+/* var numSpecialEquivGroups = function(A) {
+  const seen = new Set();
+  A.forEach(s => {
+      const count = new Array(52)
+      count.fill(0)
+      for (let i = 0; i < s.length; i++){
+          count[s.charCodeAt(i) - 97 + 26 * (i % 2)]++;
+      }
+      seen.add(count.join());
+  }) 
+  console.log(seen)
+  return seen.size;
+};
+		numSpecialEquivGroups(["abcd","cdab","cbad","xyzz","zzxy","zzyx"]) */
+		function gcd(a,b){
+  return a === 0 ? b : gcd(b % a, a);
+}
+console.log(gcd(2,3))
+
+		</script>
+	</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+/*         写一个程序，输出从 1 到 n 数字的字符串表示。
+
+1. 如果 n 是3的倍数，输出“Fizz”；
+
+2. 如果 n 是5的倍数，输出“Buzz”；
+
+3.如果 n 同时是3和5的倍数，输出 “FizzBuzz”。
+
+示例：
+
+n = 15,
+
+返回:
+[
+    "1",
+    "2",
+    "Fizz",
+    "4",
+    "Buzz",
+    "Fizz",
+    "7",
+    "8",
+    "Fizz",
+    "Buzz",
+    "11",
+    "Fizz",
+    "13",
+    "14",
+    "FizzBuzz"
+]
+通过次数51,964提交次数79,4
+
+来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/fizz-buzz
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。 */
+        var fizzBuzz = function(n) {
+            let res = [];
+            for(let i = 1; i <= n;i++){
+                if (i%5 ===0 && i%3 === 0){
+                    res.push('FizzBuzz')
+                }else if (i%5 === 0){
+                    res.push('Buzz')
+                }else if (i%3 === 0){
+                    res.push('Fizz')
+                }else{
+                    res.push(i + '')
+                }
+            }
+            return res
+        };
+
+/* 
+        这个方法是对方法二的优化。当数字和答案的映射是定好的，那么方法二用起来也还可以。但是如果你遇到一个变态的面试官，他跟你说他需要更自由的映射关系呢？
+
+每个映射一个判断显然是不可行的，这样写出来的代码一定是丑陋不堪且难以维护的。
+
+如果老板有这样一个需求，明天你把映射关系换掉或者删除一个映射关系吧。对于这种要求，我们只能一个个去修改判断条件的代码。
+
+但我们实际上有个更优雅的做法，那就是把映射关系放在 散列表 里面。
+
+算法
+
+把所有的映射关系放在散列表 fizzBuzzHash 中，这个散列表形如 { 3: 'Fizz', 5: 'Buzz' }。
+遍历 1 ... N1...N。
+对于每个数字，遍历 fizzBuzzHash 中的键，检查是否能被它整除。
+如果这个数能被键整除，就把当前键映射的值加到到答案字符串后面去。对于散列表的每个键值对，都这样操作。
+最后将答案字符串加入答案列表。
+通过这样的方式你可以对散列表添加/删除映射关系，同时还不需要修改太多代码。
+
+作者：LeetCode
+链接：https://leetcode-cn.com/problems/fizz-buzz/solution/fizz-buzz-by-leetcode/
+来源：力扣（LeetCode）
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。 */
+        var fizzBuzz = function(n) {
+            let res = [];
+            let mymap = new Map([[3,'Fizz'],[5,'Buzz']])
+            for(let i = 1; i <= n; i++){
+                let str = '';
+                mymap.forEach((value,key) => {
+                    if(i%key === 0) str += value;
+                })
+                if(str === '') str = i.toString();
+                res.push(str);
+            }
+            return res
+        };
+    </script>
+</body>
+</html>

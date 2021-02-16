@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            二叉搜索树
+            二叉查找树（Binary Search Tree），（又：二叉搜索树，二叉排序树）它或者是一棵空树，或者是具有下列性质的二叉树：
+             若它的左子树不空，则左子树上所有结点的值均小于它的根结点的值； 
+             若它的右子树不空，则右子树上所有结点的值均大于它的根结点的值； 
+             它的左、右子树也分别为二叉排序树。
+             二叉搜索树作为一种经典的数据结构，它既有链表的快速插入与删除操作的特点，又有数组快速查找的优势；所以应用十分广泛，
+             例如在文件系统和数据库系统一般会采用这种数据结构进行高效率的排序与检索操作
+        */
+
+
+
+ /*        function TreeNode(val) {
+            this.val = val;
+            this.left = this.right = null;
+        }
+        let node6 = new TreeNode(6);
+        let node2 = new TreeNode(2);
+        let node8 = new TreeNode(3);
+        let node0 = new TreeNode(0);
+        let node4 = new TreeNode(4);
+        let node7 = new TreeNode(7);
+        let node9 = new TreeNode(9);
+        let node3 = new TreeNode(3);
+        let node5 = new TreeNode(5);
+        node6.left = node2;
+        node6.right = node8;
+        node2.left = node0;
+        node2.right = node4;
+        node4.left = node3;
+        node4.right = node5;
+        node8.left = node7;
+        node8.right = node9;
+var lowestCommonAncestor = function(root, p, q) {
+    let arrp = [];
+    let arrq = [];
+    function find(node,val,arr){
+        if(!node) return false
+        if(node.val === val){
+            arr.push(node);
+            return true
+        }
+        let flagl = find(node.left,val,arr);
+        let flagr = find(node.right,val,arr);
+        if(flagl||flagr){
+            arr.push(node);
+            return true
+        }
+        return false
+    }
+    find(root,p.val,arrp);
+    find(root,q.val,arrq);
+    let i = arrp.length-1;
+    let j = arrq.length-1;
+    while(arrp[i]&&arrq[j]&&arrp[i].val === arrq[j].val){
+        i--;
+        j--;
+    }
+    return arrp[i+1]
+}
+        console.log(lowestCommonAncestor(node6,0,9)) */
+        var lowestCommonAncestor = function(root, p, q) {
+            let ancestor = root;
+            while (true) {
+                if (p.val < ancestor.val && q.val < ancestor.val) {
+                    ancestor = ancestor.left;
+                } else if (p.val > ancestor.val && q.val > ancestor.val) {
+                    ancestor = ancestor.right;
+                } else {
+                    break;
+                }
+            }
+            return ancestor;
+        }
+
+    </script>
+</body>
+</html>

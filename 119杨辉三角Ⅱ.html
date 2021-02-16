@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//超时
+			var getRow = function(rowIndex) {
+			    if(rowIndex < 0) return []
+			    if(rowIndex === 0) return [1]
+			    if(rowIndex === 1) return [1,1]
+			    let arr = new Array(rowIndex + 1).fill(1);
+			    for(let i = 1; i < arr.length - 1; i++){
+			        let preRow = getRow(rowIndex-1);
+			        arr[i] = preRow[i] + preRow[i-1];
+			    }
+			    return arr
+			};
+		</script>
+	</body>
+</html>

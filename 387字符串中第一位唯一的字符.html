@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+/*         给定一个字符串，找到它的第一个不重复的字符，并返回它的索引。如果不存在，则返回 -1。
+
+ 
+
+示例：
+
+s = "leetcode"
+返回 0
+
+s = "loveleetcode"
+返回 2
+ 
+
+来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/first-unique-character-in-a-string
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。 */
+        var firstUniqChar = function(s) {
+            let mymap = new Map();
+            for(let i = 0; i < s.length; i++){
+                if(!mymap.has(s[i])){
+                    mymap.set(s[i],i)
+                }else if(mymap.get(s[i]) !== false){
+                    mymap.set(s[i],false)
+                }
+            }
+            for(let value of mymap.values()){
+                if(value !== false) return value
+            }
+            return -1
+        };
+    </script>
+</body>
+</html>

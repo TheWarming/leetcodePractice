@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var isPerfectSquare = function(num) {
+            let left = 1;
+            let right = num;
+            while(left < right){
+                let mid = parseInt((right - left)/2) + left;
+                if(mid*mid === num){
+                    return mid
+                }else if (mid*mid > num){
+                    right = mid - 1;
+                }else{
+                    left = mid + 1;
+                }
+            }
+            return left*left === num
+        };
+
+        //牛顿迭代法
+        var isPerfectSquare = function(num){
+            if (num < 2) return true;
+            let x = parseInt(num / 2);
+            while (x * x > num) {
+            x = parseInt((x + num / x) / 2);
+            }
+            return (x * x == num);
+        }
+
+    </script>
+</body>
+</html>

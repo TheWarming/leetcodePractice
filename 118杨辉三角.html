@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var generate = function(numRows) {
+			    let result = []
+			    if(numRows <= 0) return result
+			    for(let i = 0; i < numRows; i++){
+			        result.push([]);
+			        for(let j = 0; j<= i; j++){
+			            if(j === 0 || j === i){
+			                result[result.length-1].push(1)
+			            }else{
+			                result[result.length-1].push(result[result.length-2][j-1]+result[result.length-2][j])
+			            }
+			        }
+			    }
+			    return result
+			};
+			console.log(generate(30))
+			var getRow = function(rowIndex) {
+			    let presult = [];
+			    for(let i = 0; i <= rowIndex ; i++){
+			        let result = [];
+			        for(let j = 0; j<= i; j++){
+			            if(j === 0 || j === i){
+			                result.push(1)
+			            }else{
+			                result.push(presult[j-1]+presult[j])
+			            }
+			        }
+			        presult = result;
+			    }
+			    return presult
+			};
+		</script>
+	</body>
+</html>

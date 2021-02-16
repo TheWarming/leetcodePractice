@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+            var trailingZeroes = function(n) {
+                let count = 0;
+                let help = parseInt(n/5) ;
+                while(help > 0){
+                    count += help;
+                    help = parseInt(help/5);
+                }
+                return count
+            };
+    </script>
+</body>
+</html>

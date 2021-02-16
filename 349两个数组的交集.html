@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+/*         349. 两个数组的交集
+给定两个数组，编写一个函数来计算它们的交集。 */
+        var intersection = function(nums1, nums2) {
+            let result = []
+            if(nums1.length > nums2.length){
+                var se1 = new Set(nums1);
+                var se2 = new Set(nums2);
+            }else{
+                var se1 = new Set(nums2);
+                var se2 = new Set(nums1);
+            }
+            se2.forEach(function(value){
+                if(se1.has(value)) result.push(value)
+            })
+            return result
+        };
+
+        //双指针
+        var intersection = function(nums1, nums2) {
+            let result = []
+            let index1 = 0;
+            let index2 = 0;
+            nums1.sort((a,b)=>a-b)
+            nums2.sort((a,b)=>a-b)
+            while(index1 < nums1.length && index2 < nums2.length){
+                if(nums1[index1] < nums2[index2]){
+                    index1++
+                }else if(nums1[index1] === nums2[index2]){
+                    if(nums1[index1] !== result[result.length-1]){
+                        result.push(nums1[index1])
+                    }
+                    index1++
+                    index2++
+                }else{
+                    index2++
+                }
+            }
+            return result
+        };
+    </script>
+</body>
+</html>

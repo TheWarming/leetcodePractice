@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var missingNumber = function(nums) {
+            nums.sort((a,b)=>a-b);
+            for(let i = 0; i <= nums.length; i++){
+                if(nums[i] !== i) return i
+            }
+        };
+ 
+        //异或 0 ^ 4 = 4  4 ^ 4 = 0
+        var missingNumber = function(nums) {
+            let res = nums.length;
+            for(let i = 0; i < nums.length; i++){
+                res ^= nums[i];
+                res ^= i;
+            }
+            return res
+        };
+
+        //数学方法 或者求和 (n(n+1))/2
+        var missingNumber = function(nums){
+            let sum = nums.length;
+            for(let i = 0; i < nums.length; i++){
+                sum -= nums[i];
+                sum += i;
+            }
+            return sum
+        }
+    </script>
+</body>
+</html>

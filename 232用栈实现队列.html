@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+                /**
+        * Initialize your data structure here.
+        */
+        var MyQueue = function() {
+            this.stack = [];
+        };
+
+        /**
+        * Push element x to the back of queue. 
+        * @param {number} x
+        * @return {void}
+        */
+        //大坑！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+        //不能直接用length，因为length是变化的！！！！！！！！
+        MyQueue.prototype.push = function(x) {
+            let temp = [];
+            let size = this.stack.length;
+            for(let i = 0; i < size ; i++){
+                temp.push(this.stack.pop());
+            }
+            this.stack.push(x);
+            for(let j =0; j < size ; j++){
+                this.stack.push(temp.pop());
+            }
+        };
+
+        /**
+        * Removes the element from in front of queue and returns that element.
+        * @return {number}
+        */
+        MyQueue.prototype.pop = function() {
+            return this.stack.pop();
+        };
+
+        /**
+        * Get the front element.
+        * @return {number}
+        */
+        MyQueue.prototype.peek = function() {
+            return this.stack[this.stack.length-1]
+        };
+
+        /**
+        * Returns whether the queue is empty.
+        * @return {boolean}
+        */
+        MyQueue.prototype.empty = function() {
+            return this.stack.length === 0
+        };
+
+        /**
+        * Your MyQueue object will be instantiated and called as such:
+        * var obj = new MyQueue()
+        * obj.push(x)
+        * var param_2 = obj.pop()
+        * var param_3 = obj.peek()
+        * var param_4 = obj.empty()
+        */
+
+
+
+
+
+
+
+
+
+
+
+
+        /**
+ * Initialize your data structure here.
+ */
+var MyQueue = function() {
+    this.stack = [];
+    this.front = null;
+    this.temp = [];
+};
+
+/**
+ * Push element x to the back of queue. 
+ * @param {number} x
+ * @return {void}
+ */
+MyQueue.prototype.push = function(x) {
+    if(!this.stack.length) this.front = x;
+    this.stack.push(x);
+};
+
+/**
+ * Removes the element from in front of queue and returns that element.
+ * @return {number}
+ */
+ MyQueue.prototype.pop = function() {
+    if(!this.temp.length){
+        let size = this.stack.length;
+        while(this.stack.length){
+            this.temp.push(this.stack.pop())
+        }
+    }
+    return this.temp.pop();
+};
+
+/**
+ * Get the front element.
+ * @return {number}
+ */
+MyQueue.prototype.peek = function() {
+    if(this.temp.length){
+        this.front = this.temp[this.temp.length-1]
+    }
+    return this.front
+};
+
+/**
+ * Returns whether the queue is empty.
+ * @return {boolean}
+ */
+MyQueue.prototype.empty = function() {
+    return this.stack.length === 0 && this.temp.length === 0
+};
+
+/**
+ * Your MyQueue object will be instantiated and called as such:
+ * var obj = new MyQueue()
+ * obj.push(x)
+ * var param_2 = obj.pop()
+ * var param_3 = obj.peek()
+ * var param_4 = obj.empty()
+ */
+    </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			var minDepth = function(root) {
+			    if(!root) return 0
+			    if(!root.left&&!root.right) return 1
+			    function helper(node){
+			        if(!node) return 0
+			        let dleft = helper(node.left);
+			        let dright = helper(node.right)
+			        if(dleft === 0 && dright !== 0){
+			            return dright + 1
+			        }
+			        if(dright === 0 && dleft !== 0){
+			            return dleft + 1
+			        }
+			        return Math.min(dleft,dright) + 1
+			    }
+			    return helper(root)
+			};
+		</script>
+	</body>
+</html>

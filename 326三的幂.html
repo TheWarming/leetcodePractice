@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var isPowerOfThree = function(n) {
+            return (Math.log(n)/Math.log(3)).toFixed(10)%1 === 0
+        }
+        //循坏
+        var isPowerOfThree = function(n) {
+            if(n < 1) return false
+            while(n%3 === 0){
+                n = n/3
+            }
+            return n === 1
+        }
+        //基准转换
+        /* 在基数 10 中，10 的所有幂都从数字 1 开始，然后只跟 0（例如10、100、1000）。其他基地及其各自的权力也是如此。
+         因此，如果我们把我们的数转换成基3，并且表示形式是 100…0，那么这个数就是3的幂。 */
+         var isPowerOfThree = function(n){
+             return n.toString(3).match(/^10*$/) !== null  
+         }
+         let num = 45
+         console.log(num.toString(3).match(/^10*$/)!== null)
+
+         //推算3的幂的最大值3^19 限定质数
+         var isPowerOfThree = function(n){
+            return n > 0 && 1162261467 % n == 0;
+         }
+    </script>
+</body>
+</html>

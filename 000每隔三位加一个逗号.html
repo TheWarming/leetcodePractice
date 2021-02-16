@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function paddingNum(n){
+			    let result = n.toString().split('');
+				console.log(result)
+			    let m = result.indexOf('.');
+			    while(m-3>0){
+					result.splice(m-3,0,',');
+					m = m - 3;
+				}
+				return result.join('');
+			}
+			console.log(paddingNum(12255536.6555))
+			
+			function productExceptSelf(arr){
+				let result = [];
+				for (let i = 0; i < arr.length; i++) {
+					result[i] = 1; 
+					for (let j = 0; j < arr.length; j++) {
+						if(i != j) {
+							result[i] = result[i]*arr[j];
+						}
+					}
+				}
+				return result
+			}
+			console.log(productExceptSelf([2,3,4,5]))
+			
+			function strReverse(str){
+			    let sarr = str.split(/\s+/);
+			    sarr.reverse();
+			    return sarr.join(' ');
+			}
+			console.log(strReverse('the	sky	is												blue!'))
+		</script>
+	</body>
+</html>

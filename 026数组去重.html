@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// 给定一个排序数组，你需要在 原地 删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。
+			
+			// 不要使用额外的数组空间，你必须在 原地 修改输入数组 并在使用 O(1) 额外空间的条件下完成。
+			
+			//  
+			
+			// 来源：力扣（LeetCode）
+			// 链接：https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array
+			// 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+			// var removeDuplicates = function(nums) {
+			//     let obj = {};
+			//     let oLength = nums.length;
+			//     for(let i = 0; i < oLength; i++){
+			//         if(!obj[nums[i]]){
+			//             obj[nums[i]] = true;
+			//             nums[nums.length] = nums[i];
+			//         }
+			//     }
+			//     let n = 0;
+			//     for(let i = oLength;i < nums.length; i++){
+			//         nums[n] = nums[i];
+			//         n++;
+			//     }
+			//     nums.length = n;
+			//     return nums.length
+			// };
+			// console.log(removeDuplicates([1,1,2]))
+			
+			// //双指针思想？？？
+			// public int removeDuplicates(int[] nums) {
+			//     if (nums.length == 0) return 0;
+			//     int i = 0;
+			//     for (int j = 1; j < nums.length; j++) {
+			//         if (nums[j] != nums[i]) {
+			//             i++;
+			//             nums[i] = nums[j];
+			//         }
+			//     }
+			//     return i + 1;
+			// }
+			var removeDuplicates = function(nums){
+				if (nums.length === 0) return 0;
+				let i = 0;
+				for (let j = 1; j < nums.length; j++){
+					if(nums[j] != nums[i]){
+						i++;
+						nums[i] = nums[j];
+					}
+				}
+				return i + 1
+			}
+			let arr = [1,1,2]
+			console.log(removeDuplicates(arr),arr)			
+		</script>
+	</body>
+</html>

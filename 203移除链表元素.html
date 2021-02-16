@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var removeElements = function(head, val) {
+            if(!head) return head
+            let tail = head;
+            while(tail.next){
+                if(tail.next.val === val){
+                    tail.next = tail.next.next;
+                }else{
+                    tail = tail.next;
+                }
+            }
+            if(head.val === val) head=head.next;
+            return head
+        };
+    </script>
+</body>
+</html>

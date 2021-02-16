@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+/* 			将一个按照升序排列的有序数组，转换为一棵高度平衡二叉搜索树。
+			
+			本题中，一个高度平衡二叉树是指一个二叉树每个节点 的左右两个子树的高度差的绝对值不超过 1。
+			
+			示例:
+			
+			给定有序数组: [-10,-3,0,5,9],
+			
+			一个可能的答案是：[0,-3,9,-10,null,5]，它可以表示下面这个高度平衡二叉搜索树：
+			
+			      0
+			     / \
+			   -3   9
+			   /   /
+			 -10  5 */
+			var sortedArrayToBST = function(nums) {
+			    let helper = function(arr,left,right){
+			        if(left > right) return null
+			        let mid = parseInt((left + right)/2)
+			        let node = new TreeNode(arr[mid]);
+			        node.left = helper(arr,left,mid-1);
+			        node.right = helper(arr,mid+1,right);
+			        return node
+			    }
+			    return helper(nums,0,nums.length-1)
+			};
+		</script>
+		
+	</body>
+</html>

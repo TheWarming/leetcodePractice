@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var intersect = function(nums1, nums2) {
+            let index1 = 0;
+            let index2 = 0;
+            nums1.sort((a,b)=>a-b)
+            nums2.sort((a,b)=>a-b)
+            let result = [];
+            let arr = nums1.length < nums2.length ? nums1:nums2;
+            while(index1 < nums1.length&& index2 < nums2.length){
+                if(nums1[index1] === nums2[index2]){
+                    result.push(nums1[index1]);
+                    index1++;
+                    index2++;
+                }else if(nums1[index1] > nums2[index2]){
+                    index2++
+                }else{
+                    index1++
+                }
+            }
+            return result
+        };
+
+
+        var intersect = function(nums1, nums2) {
+            const helper = (nums1,nums2) => {
+                return nums1.length < nums2.length ? [nums1,nums2]:[nums2,nums1]
+            }
+            let [arr,farr] = helper(nums1,nums2)
+            let map = new Map();
+            let result = [];
+            arr.forEach((item) => {
+                map.has(item) ? map.set(item,map.get(item)+1) : map.set(item,1)
+            })
+            farr.forEach(item => {
+                if(map.get(item) >= 1){
+                    map.set(item,map.get(item)-1)
+                    result.push(item)
+                }
+            })
+            return result
+        };
+    </script>
+</body>
+</html>

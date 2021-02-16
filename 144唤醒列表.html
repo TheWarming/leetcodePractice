@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			var hasCycle = function(head) {
+			    let arr = [];
+			    while(head){
+			        if(arr.indexOf(head) !== -1) return true
+			        arr.push(head)
+			        head = head.next;
+			    }
+			    return false
+			};
+			var hasCycle = function(head) {
+			    while(head){
+			        if(head.flag) return true
+			        head.flag = true;
+			        head = head.next;
+			    }
+			    return false
+			};
+			//快慢指针
+			var hasCycle = function(head) {
+                if(!head) return false
+			    let fast = head.next;
+				let slow = head;
+				while(fast !== slow){
+					if(!fast||!slow) return false
+					if(!fast.next) return false
+					fast = fast.next.next;
+					slow = slow.next
+				}
+                return true
+			};
+		</script>
+	</body>
+</html>

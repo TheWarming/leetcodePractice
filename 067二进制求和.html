@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/*
+			给你两个二进制字符串，返回它们的和（用二进制表示）。
+
+			输入为 非空 字符串且只包含数字 1 和 0。
+
+			 
+
+			示例 1:
+
+			输入: a = "11", b = "1"
+			输出: "100"
+			示例 2:
+
+			输入: a = "1010", b = "1011"
+			输出: "10101"
+
+			来源：力扣（LeetCode）
+			链接：https://leetcode-cn.com/problems/add-binary
+			著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+			*/
+
+			// var addBinary = function(a, b) {
+			//     a = parseInt(a);
+			//     b = parseInt(b);
+			//     let presult = (a + b + '').split('');
+			//     let index = presult.lastIndexOf('2');
+			//     while(index !== -1){
+			//         presult[index] = 0;
+			//         if(index !== 0){
+			//             presult[index - 1] = parseInt(presult[index - 1]) + 1 + '';
+			//         }else{
+			//             presult.unshift('1')
+			// 			break
+			//         }
+			//         index = presult.lastIndexOf('2')
+			//     }
+			// 	index = presult.lastIndexOf('3');
+			// 	while(index !== -1){
+			// 		presult[index] = 1;
+			// 		if(index !== 0){
+			// 			presult[index - 1]++
+			// 		}else{
+			// 			presult.unshift('1');
+			// 			break
+			// 		}
+			// 		index = presult.lastIndexOf('3')
+			// 	}
+			// };
+			// console.log(addBinary('1010','1011'))
+			
+			//大佬利用双按位非取零来解题
+			const addBinary = (a, b) => {
+			  let str = ''
+			  let i = a.length -1, j = b.length -1
+			  let dight = 0, cary = 0, sum = 0
+			  while (i >= 0 || j >= 0) {
+			    sum = ~~a[i] + ~~b[j] + cary
+			    dight = sum % 2
+			    cary = (sum - dight) / 2
+			    str = dight + str
+			    i--
+			    j--
+			  }
+			  return cary ? cary + str : str
+			}
+			console.log(~~(undefined))
+			let arr = [1];
+			console.log(arr[-1]);
+			
+			//仿写
+			var addBinary2 = function(a, b) {
+			    let sum = 0;
+			    let carry = 0;
+			    let digit = 0;
+			    let ai = a.length - 1;
+			    let bi = b.length - 1;
+			    let result = [];
+			    while(a[ai]||b[bi]){
+			        sum = ~~a[ai] + ~~b[bi] + carry;
+			        digit = sum % 2;
+			        carry = parseInt((sum -  digit)/2);
+			        result.unshift(digit);
+			        ai--;
+			        bi--;
+			    }
+			    return carry ? 1 + result.join('') : result.join('');
+			};
+		</script>
+	</body>
+</html>

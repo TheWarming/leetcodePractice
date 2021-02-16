@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var containsNearbyDuplicate = function(nums, k) {
+            for(let i = 0; i < nums.length; i++){
+                for(let j = i + 1; j < nums.length; j++){
+                    if(nums[i] === nums[j]){
+                        if(j - i <= k){
+                            return true
+                        }else{
+                            break
+                        }
+                    }
+                }
+            }
+            return false
+        };
+        var containsNearbyDuplicate = function(nums, k) {
+            let map = new Map();
+            for(let i = 0; i < nums.length; i++){
+                if(!map.has(nums[i])){
+                    map.set(nums[i],i)
+                }else{
+                    if(i - map.get(nums[i]) <= k){
+                        return true
+                    }else{
+                        map.set(nums[i],i)
+                    }
+                }
+            }
+            return false
+        };
+
+        //超级慢
+        var containsNearbyDuplicate = function(nums, k) {
+            for(let i = 0; i < nums.length; i++){
+                let index = nums.indexOf(nums[i],i+1)
+                if(index >=0 && index - i <=k) return true
+            }
+            return false
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			var getIntersectionNode = function(headA, headB) {
+				let arr = [];
+				while(headA||headB){
+					if(headA){
+						if(arr.indexOf(headA) !== -1) return headA
+						arr.push(headA);
+						headA = headA.next;
+					}
+					if(headB){
+						if(arr.indexOf(headB) !== -1) return headB
+						arr.push(headB)
+						headB = headB.next;
+					}
+				}
+			};
+			var getIntersectionNode = function(headA, headB) {
+			    let s = Symbol('flag')
+				while(headA){
+					headA.s = true;
+					headA = headA.next
+				}
+				while(headB){
+					if(headB.s) return headB
+				}
+			};
+			//神奇算法 
+			var getIntersectionNode = function(headA, headB) {
+			    if(!headA||!headB) return null
+			    let hA = headA;
+			    let hB = headB;
+			    while(hA !== hB){
+			        hA = hA ? hA.next:headB
+			        hB = hB ? hB.next:headA
+			    }
+			    return hA
+			};
+		</script>
+	</body>
+</html>

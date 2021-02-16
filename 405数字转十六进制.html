@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var toHex = function(num) {
+            if (num === 0) {
+                return '0'
+            }
+            let hex = '0123456789abcdef', s = ''
+            while (num && s.length < 8) {
+                s = hex[num & 0xf] + s
+                num = num >> 4
+            }
+            return s
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+		<script type="text/javascript">
+			var hasPathSum = function(root, sum) {
+			    if(!root) return false
+			    let arr = [];
+			    function helper(node,val){
+			        if(node){
+			            if(!node.left&&!node.right){
+			                arr.push(node.val + val)
+			            }else{
+			                helper(node.left,node.val + val);
+			                helper(node.right,node.val + val);
+			            }
+			        }
+			    }
+			    helper(root,0);
+			    return arr.indexOf(sum) !== -1
+			};
+			var hasPathSum = function(root, sum) {
+			    if(!root) return false
+				if(!root.left&&!root.right){
+					return root.val === sum
+				}
+			    return hasPathSum(root.left,sum-root.val)||hasPathSum(root.right,sum-root.val)
+			};
+		</script>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+/* 给定两个字符串 s 和 t，它们只包含小写字母。
+
+字符串 t 由字符串 s 随机重排，然后在随机位置添加一个字母。
+
+请找出在 t 中被添加的字母。 */
+
+ 
+        var findTheDifference = function(s, t) {
+            let mymap = new Map();
+            for(let i = 0; i < t.length; i++){
+                !mymap.has(t[i]) ? mymap.set(t[i],1) : mymap.set(t[i],mymap.get(t[i]) + 1)
+                if(s[i]){
+                    !mymap.has(s[i]) ? mymap.set(s[i],-1) : mymap.set(s[i],mymap.get(s[i]) - 1)
+                }
+            }
+            for(let [key,value] of mymap){
+                if(value === 1) return key
+            }
+        };
+        findTheDifference('ac','abc')
+
+
+        var findTheDifference = function(s, t) {
+            let as = 0, at = 0;
+            for (let i = 0; i < s.length; i++) {
+                as += s[i].charCodeAt();
+            }
+            for (let i = 0; i < t.length; i++) {
+                at += t[i].charCodeAt();
+            }
+            return String.fromCharCode(at - as);
+        };
+
+        //异或
+        var findTheDifference = function(s, t) {
+            let ret = 0;
+            for (const ch of s) {
+                ret ^= ch.charCodeAt();
+            }
+            for (const ch of t) {
+                ret ^= ch.charCodeAt();
+            }
+            return String.fromCharCode(ret);
+        };
+    </script>
+</body>
+</html>
