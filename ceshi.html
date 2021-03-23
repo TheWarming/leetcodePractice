@@ -29,11 +29,36 @@
   return seen.size;
 };
 		numSpecialEquivGroups(["abcd","cdab","cbad","xyzz","zzxy","zzyx"]) */
-		function gcd(a,b){
+/* 		function gcd(a,b){
   return a === 0 ? b : gcd(b % a, a);
 }
-console.log(gcd(2,3))
-
+console.log(gcd(2,3)) */
+var checkArithmeticSubarrays = function(nums, l, r) {
+  const ans = []
+  for(let i = 0; i < l.length; i++){
+      const start = l[i];
+      const end = r[i];
+      const arr = nums.slice(start,end+1);
+      arr.sort((a,b) => a-b);
+      const n = arr[1] - arr[0];
+			let flag = true;
+      for(let j = 1; j < arr.length-1; j++) {
+					console.log(arr[j+1],arr[j])
+          if(arr[j+1] - arr[j] !== n){
+              ans.push(false);
+              flag = false
+              break
+          }
+      }
+      flag && ans.push(true)
+	}
+	console.log(ans)
+  return ans
+};
+checkArithmeticSubarrays(
+  [4,6,5,9,3,7],
+  [0,0,2],
+  [2,3,5])
 		</script>
 	</body>
 </html>
