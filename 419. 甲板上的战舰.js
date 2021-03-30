@@ -52,3 +52,17 @@ var countBattleships = function(board) {
   }
   return ans
 };
+
+
+/* 计数所有战舰的“左边和上边” */
+
+var countBattleships = function(board) {
+    let count=0;
+    for(let r=0;r<board.length;++r){
+        for(let c=0;c<board[0].length;++c){
+            if((board[c][r]=='X')&&(r===0||board[r-1][c]==='.')&&(c===0||board[r][c-1]==='.'))
+                ++count;
+        }
+    }
+    return count;
+}
