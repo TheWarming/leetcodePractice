@@ -29,7 +29,7 @@ var productExceptSelf = function(nums) {
       left[i] = left[i-1]*nums[i-1]
   }
 
-  const right = new Array(len);
+/*   const right = new Array(len);
   right[len-1] = 1
   for(let i = len-2; i >= 0; i--){
       right[i] = right[i+1]*nums[i+1]
@@ -39,5 +39,14 @@ var productExceptSelf = function(nums) {
   for(let i = 0; i < len; i++){
       ans[i] = left[i] * right[i]
   }
-  return ans
+  return ans */
+
+  //动态生成right
+  let right = 1
+  for(let i = len-1; i >= 0; i--){
+    left[i] = left[i] * right
+    right *= nums[i]
+  }
+
+  return left
 };
