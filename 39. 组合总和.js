@@ -31,6 +31,8 @@ var combinationSum = function(candidates, target) {
           ans.push([...temp])
           return
       }
+
+      //重点：要把i传进去当作起始
       for(let i = start; i < candidates.length; i++){
           const n = candidates[i]
           temp.push(n);
