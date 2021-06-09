@@ -33,7 +33,7 @@ var numSquares = function(n) {
   return 3;
 
   function isSquare(n) {
-      let sq = Math.sqrt(n);
+      let sq = parseInt(Math.sqrt(n));
       return n == sq * sq;
   }
 };
