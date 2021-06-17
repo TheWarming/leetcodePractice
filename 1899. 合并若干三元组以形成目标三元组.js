@@ -44,3 +44,19 @@ var mergeTriplets = function(triplets, target) {
   }
   return ans.every(n => n)
 };
+
+/**
+ * @param {number[][]} triplets
+ * @param {number[]} target
+ * @return {boolean}
+ */
+var mergeTriplets = function(triplets, target) {
+  const ans = [0,0,0]
+  for(let t of triplets){
+    if(t[0] > target[0] || t[1] > target[1] || t[2] > target[2]) continue
+    for(let i = 0; i <=2; i++){
+      ans[i] = Math.max(ans[i],t[i])
+    }
+  }
+  return ans.every((n,i) => n === target[i])
+};
