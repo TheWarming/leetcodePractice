@@ -46,3 +46,27 @@ var longestBeautifulSubstring = function(word) {
   }
   return ans
 };
+
+var longestBeautifulSubstring = function(word) {
+    const transit = new Set(["aa", "ae","ee","ei","ea","ii","io","ia","oo","oa","ou","uu","ua","xa"]);
+    let status = "x"; // init status
+    let cur = 0;// current length
+    let ans = 0;
+    for(const char of word){
+        if(transit.has(status+char)){ // in the transition set
+            if(status!="a"&&char=="a"){ // recount
+                cur = 1;
+            }else{
+                cur++;
+            }
+            status = char; // update the status
+        }else{
+            status = "x"; // update the status
+            cur = 0;
+        }
+        if(status=="u"){
+            ans = Math.max(ans, cur);
+        }
+    }
+    return ans;
+};
