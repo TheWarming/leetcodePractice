@@ -27,4 +27,4 @@ var numComponents = function(head, nums) {
       head = head.next
   }
   return ans
-};
+}; 
