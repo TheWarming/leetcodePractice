@@ -21,24 +21,24 @@
  * @return {number}
  */
 var numIslands = function(grid) {
-  const imax = grid.length
-  const jmax = grid[0].length
-  let ans = 0
-  for(let i = 0; i < imax; i++){
-      for(let j = 0; j < jmax; j++){
-          if(grid[i][j] === '1'){
-              helper(i,j)
-              ans++
-          }
-      }
-  }
-  return ans
-  function helper(i,j){
-      if(i < 0 || i >= imax || j < 0 || j >= jmax || grid[i][j] === '0') return
-      grid[i][j] = '0'
-      helper(i+1,j)
-      helper(i,j+1)
-      helper(i-1,j)
-      helper(i,j-1)
-  }
+    const imax = grid.length
+    const jmax = grid[0].length
+    let ans = 0
+    for(let i = 0; i < imax; i++){
+        for(let j = 0; j < jmax; j++){
+            if(grid[i][j] === '1'){
+                helper(i,j)
+                ans++
+            }
+        }
+    }
+    return ans
+    function helper(i,j){
+        if(i < 0 || i >= imax || j < 0 || j >= jmax || grid[i][j] === '0') return
+        grid[i][j] = '0'
+        helper(i+1,j)
+        helper(i,j+1)
+        helper(i-1,j)
+        helper(i,j-1)
+    }
 };
